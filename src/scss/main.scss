@@ -1,16 +1,82 @@
 @import "_normalize";
 @import "_variables";
-
+@import url('https://fonts.googleapis.com/css?family=Courgette|Inconsolata:400,700&display=swap&subset=latin-ext');
 
 html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 body {
-  color: $addGlass;
+  color: $secondary;
   background: $bg;
+  font-family: 'Montserrat';
+}
+
+.glass {
+  &__buttons {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  &__btn {
+    border: 0;
+    border-radius: 4px;   
+    padding: 12px 32px;
+    margin-bottom: 1em;
+    &--add {
+      margin-top: 2em;
+      background: $secondary;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    &--del {
+      background: none;
+      color: $secondary;
+      font-size: 14px;
+    }
+  }
+  &__counter {
+    font-size: 7em;
+    margin: 0 0 0.5em 0;
+    color: #000;
+  }
+  &__img {
+    width: 100%;
+    min-width: 280px;
+    min-height: 280px;
+    background: url(../assets/img/glass.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+}
+
+.header {
+  &__text {
+    padding: 0 0 1em 0;
+    margin: 0;
+    font-weight: normal;
+    letter-spacing: 3px;
+    font-size: 2em;
+    font-style: italic;
+    font-family: 'Shadows Into Light';
+  }
+}
+
+.history {
+}
+.wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
