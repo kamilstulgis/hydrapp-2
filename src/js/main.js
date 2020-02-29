@@ -17,6 +17,23 @@ if ('serviceWorker' in navigator) {
 // place your code below
 
 
-console.log(`Hello world!`);
+let glass = 0;
+const counter = document.querySelector('.glass__counter--js');
+const add = document.querySelector('.glass__add--js');
+const del = document.querySelector('.glass__del--js');
 
+counter.innerHTML=`${glass}`;
 
+add.addEventListener('click', (e)=> {
+  e.preventDefault();
+  glass += 1;
+  if(glass < 0 ? glass = 0 : counter.innerHTML=`${glass}`);
+  console.log(glass);
+});
+
+del.addEventListener('click', (e)=> {
+  e.preventDefault();
+  glass -= 1;
+  if(glass < 0 ? glass = 0 : counter.innerHTML=`${glass}`);
+  console.log(glass);
+});
