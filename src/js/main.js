@@ -21,19 +21,27 @@ let glass = 0;
 const counter = document.querySelector('.glass__counter--js');
 const add = document.querySelector('.glass__add--js');
 const del = document.querySelector('.glass__del--js');
+const key = new Date().toISOString().slice(0, 10);
 
+
+console.log(glass);
 counter.innerHTML=`${glass}`;
 
 add.addEventListener('click', (e)=> {
   e.preventDefault();
   glass += 1;
   if(glass < 0 ? glass = 0 : counter.innerHTML=`${glass}`);
+  localStorage.setItem(key,glass);
   console.log(glass);
+
 });
 
 del.addEventListener('click', (e)=> {
   e.preventDefault();
   glass -= 1;
   if(glass < 0 ? glass = 0 : counter.innerHTML=`${glass}`);
+  localStorage.removeItem(key,glass);
+  localStorage.setItem(key,glass);
   console.log(glass);
 });
+
