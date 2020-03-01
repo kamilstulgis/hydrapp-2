@@ -23,6 +23,9 @@ const add = document.querySelector('.glass__add--js');
 const del = document.querySelector('.glass__del--js');
 const key = new Date().toISOString().slice(0, 10);
 
+const history = document.querySelector('.history__days--js');
+const historyGlass = document.querySelector('.history__glass--js');
+
 
 console.log(glass);
 counter.innerHTML=`${glass}`;
@@ -33,7 +36,7 @@ add.addEventListener('click', (e)=> {
   if(glass < 0 ? glass = 0 : counter.innerHTML=`${glass}`);
   localStorage.setItem(key,glass);
   console.log(glass);
-
+  console.log(localStorage.getItem(glass));
 });
 
 del.addEventListener('click', (e)=> {
@@ -44,4 +47,8 @@ del.addEventListener('click', (e)=> {
   localStorage.setItem(key,glass);
   console.log(glass);
 });
+console.log(localStorage.getItem(key));
+
+history.innerHTML=`<p>${key}</p>`;
+historyGlass.innerHTML=`<p>${localStorage.getItem(key)}</p>`;
 
