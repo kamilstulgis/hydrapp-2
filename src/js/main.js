@@ -24,21 +24,21 @@ let glass = 0;
 const key = new Date().toISOString().slice(0, 10);
 
 const history = document.querySelector('.history__days--js');
-const historyGlass = document.querySelector('.history__glass--js');
+const historyGlass = document.querySelector('.history__glasses--js');
 
 
 const local = () => {
   if (localStorage.getItem(key)) {
     glass = parseInt(localStorage.getItem(key));
     counter.innerHTML = `${glass}`;
-    history.innerHTML = `<p>${key}</p>`;
-    historyGlass.innerHTML = `<p>${localStorage.getItem(key)}</p>`;
+    history.innerHTML = `${key}`;
+    historyGlass.innerHTML = `${localStorage.getItem(key)}`;
 
   } else {
     glass = 0;
     counter.innerHTML = `${glass}`;
-    history.innerHTML = `<p>${key}</p>`;
-    historyGlass.innerHTML = `<p>${glass}</p>`;
+    history.innerHTML = `${key}`;
+    historyGlass.innerHTML = `${glass}`;
   }
 
   add.addEventListener('click', (e) => {
@@ -48,8 +48,8 @@ const local = () => {
     counter.innerHTML = `${glass}`;
     console.log(glass);
 
-    history.innerHTML = `<p>${key}</p>`;
-    historyGlass.innerHTML = `<p>${localStorage.getItem(key)}</p>`;
+    history.innerHTML = `${key}`;
+    historyGlass.innerHTML = `${localStorage.getItem(key)}`;
   });
 
 
@@ -64,8 +64,8 @@ const local = () => {
       counter.innerHTML = `${glass}`;
       localStorage.setItem(key, glass);
     }
-    history.innerHTML = `<p>${key}</p>`;
-    historyGlass.innerHTML = `<p>${localStorage.getItem(key)}</p>`;
+    history.innerHTML = `${key}`;
+    historyGlass.innerHTML = `${localStorage.getItem(key)}`;
     console.log(glass);
   });
 

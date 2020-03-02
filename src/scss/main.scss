@@ -72,11 +72,28 @@ body {
 }
 
 .history {
+  text-align: center;
+  &__day {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+  }
   &__days {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    align-items: center;
+    margin: 0;
+  }
+  &__glass {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1em 0;
+  }
+  &__glasses {
+    margin: 0;
+  }
+  &__structure {
+
+  }
+  &__text {
+    text-align: center;
   }
 }
 .wrapper {
