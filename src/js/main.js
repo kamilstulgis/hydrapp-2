@@ -23,11 +23,11 @@ const del = document.querySelector('.glass__del--js');
 let glass = 0;
 const key = new Date().toISOString().slice(0, 10);
 
-const history = document.querySelector('.history__days--js');
-const historyGlass = document.querySelector('.history__glasses--js');
-
+let history = document.querySelector('.history__days--js');
+let historyGlass = document.querySelector('.history__glasses--js');
 
 const local = () => {
+
   if (localStorage.getItem(key)) {
     glass = parseInt(localStorage.getItem(key));
     counter.innerHTML = `${glass}`;
@@ -66,7 +66,6 @@ const local = () => {
     }
     history.innerHTML = `${key}`;
     historyGlass.innerHTML = `${localStorage.getItem(key)}`;
-    console.log(glass);
   });
 
 }
