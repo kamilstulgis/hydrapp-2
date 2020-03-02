@@ -3,11 +3,11 @@
 // service worker registration - remove if you're not going to use it
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('serviceworker.js').then(function(registration) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('serviceworker.js').then(function (registration) {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
+    }, function (err) {
       // registration failed :(
       console.log('ServiceWorker registration failed: ', err);
     });
@@ -17,38 +17,58 @@ if ('serviceWorker' in navigator) {
 // place your code below
 
 
-let glass = 0;
 const counter = document.querySelector('.glass__counter--js');
 const add = document.querySelector('.glass__add--js');
 const del = document.querySelector('.glass__del--js');
+let glass = 0;
 const key = new Date().toISOString().slice(0, 10);
 
 const history = document.querySelector('.history__days--js');
 const historyGlass = document.querySelector('.history__glass--js');
 
 
-console.log(glass);
-counter.innerHTML=`${glass}`;
+const local = () => {
+  if (localStorage.getItem(key)) {
+    glass = parseInt(localStorage.getItem(key));
+    counter.innerHTML = `${glass}`;
+    history.innerHTML = `<p>${key}</p>`;
+    historyGlass.innerHTML = `<p>${localStorage.getItem(key)}</p>`;
 
-add.addEventListener('click', (e)=> {
-  e.preventDefault();
-  glass += 1;
-  if(glass < 0 ? glass = 0 : counter.innerHTML=`${glass}`);
-  localStorage.setItem(key,glass);
-  console.log(glass);
-  console.log(localStorage.getItem(glass));
-});
+  } else {
+    glass = 0;
+    counter.innerHTML = `${glass}`;
+    history.innerHTML = `<p>${key}</p>`;
+    historyGlass.innerHTML = `<p>${glass}</p>`;
+  }
 
-del.addEventListener('click', (e)=> {
-  e.preventDefault();
-  glass -= 1;
-  if(glass < 0 ? glass = 0 : counter.innerHTML=`${glass}`);
-  localStorage.removeItem(key,glass);
-  localStorage.setItem(key,glass);
-  console.log(glass);
-});
-console.log(localStorage.getItem(key));
+  add.addEventListener('click', (e) => {
+    e.preventDefault();
+    glass += 1;
+    localStorage.setItem(key, glass);
+    counter.innerHTML = `${glass}`;
+    console.log(glass);
 
-history.innerHTML=`<p>${key}</p>`;
-historyGlass.innerHTML=`<p>${localStorage.getItem(key)}</p>`;
+    history.innerHTML = `<p>${key}</p>`;
+    historyGlass.innerHTML = `<p>${localStorage.getItem(key)}</p>`;
+  });
 
+
+  del.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (glass <= 0) {
+      glass = 0;
+      localStorage.setItem(key, glass);
+    } else {
+      glass -= 1;
+      localStorage.removeItem(key, glass);
+      counter.innerHTML = `${glass}`;
+      localStorage.setItem(key, glass);
+    }
+    history.innerHTML = `<p>${key}</p>`;
+    historyGlass.innerHTML = `<p>${localStorage.getItem(key)}</p>`;
+    console.log(glass);
+  });
+
+}
+
+local();
