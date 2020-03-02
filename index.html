@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Site title</title>
+  <meta name="description" content="Description" />
+
+  <!-- Title -->
+  <meta property="og:title" content="" />
+  <!-- OPTIONAL description. 2-4 sentences. -->
+  <meta property="og:description" content="Hydrapp - to count your 🥛 of 🌊" />
+  <!-- full url with http(s) ie. https://maciejkorsan.github.io/my-repo/ -->
+  <meta property="og:url" content="https://github.com/kamilstulgis/hydrapp-2/" />
+  <!-- full url to the image with http(s) ie. https://maciejkorsan.github.io/my-repo/assets/img/fb.png. Facebook suggests at least 1200 x 630. -->
+  <meta property="og:image" content="https://github.com/kamilstulgis/hydrapp-2/assets/img/cover.png" />
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/pwa/icons/icon-192x192.png" />
+
+  <link rel="icon" type="image/png" href="assets/pwa/icons/icon-192x192.png" />
+
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <h1 class="header__text">Hydrapp</h1>
+    </header>
+    <main class="glass">
+      <div class="glass__img">
+        <p class="glass__counter glass__counter--js"></p>
+      </div>
+      <div class="glass__buttons">
+        <button class="glass__btn glass__btn--add glass__add--js">Dodaj szklankę</button>
+        <button class="glass__btn glass__btn--del glass__del--js">Usuń szklankę</button>
+      </div>
+    </main>
+    <section class="history">
+      <header>
+        <h3 class="history__text">
+          Historia picia wody
+        </h3>
+        <a href="history.html">Historia</a>
+      </header>
+      <main class="history__stucture">
+        <div class="history__day">
+          <span>Dzień</span>
+          <span>Liczba szklanek</span>
+        </div>
+        <div class="history__glass">
+          <p class="history__days history__days--js"></p>
+          <p class="history__glasses history__glasses--js"></p>
+        </div>
+      </main>
+    </section>
+    <footer class="footer">
+      Make with 💕 from Suwałki
+    </footer>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
