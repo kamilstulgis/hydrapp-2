@@ -31,8 +31,8 @@ const local = () => {
   if (localStorage.getItem(key)) {
     glass = parseInt(localStorage.getItem(key));
     counter.innerHTML = `${glass}`;
-    history.innerHTML = `${key}`;
-    historyGlass.innerHTML = `${localStorage.getItem(key)}`;
+    // history.innerHTML = `${key}`;
+    // historyGlass.innerHTML = `${localStorage.getItem(key)}`;
 
   } else {
     glass = 0;
@@ -48,8 +48,8 @@ const local = () => {
     counter.innerHTML = `${glass}`;
     console.log(glass);
 
-    history.innerHTML = `${key}`;
-    historyGlass.innerHTML = `${localStorage.getItem(key)}`;
+    // history.innerHTML = `${key}`;
+    // historyGlass.innerHTML = `${localStorage.getItem(key)}`;
   });
 
 
@@ -64,11 +64,36 @@ const local = () => {
       counter.innerHTML = `${glass}`;
       localStorage.setItem(key, glass);
     }
-    history.innerHTML = `${key}`;
-    historyGlass.innerHTML = `${localStorage.getItem(key)}`;
+    // history.innerHTML = `${key}`;
+    // historyGlass.innerHTML = `${localStorage.getItem(key)}`;
     console.log(glass);
   });
+}
 
+const historyBtn = document.querySelector('.history__btn--js');
+
+const hist = () => {
+
+  historyBtn.addEventListener('click', (e) => {
+    // DODAĆ IF, by nie pobieralo caly czas tej samej zawartosci
+    e.preventDefault();
+    for (let i = 0; i <= localStorage.length - 1; i++) {
+      let day = document.createElement('p');
+      let number = document.createElement('p');
+      let elKey = `${localStorage.key(i)}`;
+
+      console.log(`${localStorage.key(i)}`);
+      console.log(`${localStorage.getItem(elKey)}`);
+
+      history.appendChild(day);
+      historyGlass.appendChild(number);
+      day.innerHTML = `${localStorage.key(i)}`;
+      number.innerHTML = `${localStorage.getItem(elKey)}`;
+      // history.innerHTML = `${localStorage.key(i)}`;
+
+    }
+  });
 }
 
 local();
+hist();
