@@ -78,18 +78,32 @@ const hist = () => {
     // DODAĆ IF, by nie pobieralo caly czas tej samej zawartosci
     e.preventDefault();
     for (let i = 0; i <= localStorage.length - 1; i++) {
-      let day = document.createElement('p');
-      let number = document.createElement('p');
+      // let day = document.createElement('p');
+      // let number = document.createElement('p');
+
+      // history.appendChild(day);
+      // historyGlass.appendChild(number);
+      // day.innerHTML = `${localStorage.key(i)} - ${localStorage.getItem(elKey)} `;
+      // number.innerHTML = `${localStorage.getItem(elKey)}`;
+
+      let day,number;
+      let myArr = [];
+
       let elKey = `${localStorage.key(i)}`;
+ 
+      day = `${localStorage.key(i)}`;
+      number = `${localStorage.getItem(elKey)}`;
 
-      console.log(`${localStorage.key(i)}`);
-      console.log(`${localStorage.getItem(elKey)}`);
+      myArr.push(`${day} - ${number}`);
 
-      history.appendChild(day);
-      historyGlass.appendChild(number);
-      day.innerHTML = `${localStorage.key(i)}`;
-      number.innerHTML = `${localStorage.getItem(elKey)}`;
-      // history.innerHTML = `${localStorage.key(i)}`;
+      // myArr.sort(function(a, b) {
+      //   return b - a;
+      // }); DO POPRAWKI
+
+      for(let el in myArr) {
+        console.log(myArr[el]);
+        // history.innerHTML = `<p>${myArr[el]}</p>`; DO POPRAWKI
+      }
 
     }
   });
