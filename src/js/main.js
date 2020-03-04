@@ -67,7 +67,20 @@ const local = () => {
     history.innerHTML = `${key}`;
     historyGlass.innerHTML = `${localStorage.getItem(key)}`;
   });
-
 }
+
+let data = {
+  date: `${key}`,
+  glass: localStorage.getItem(key),
+}
+
+let tab = [];
+
+tab.push(`${key}  ${localStorage.getItem(key)}`);
+console.log(tab);
+
+
+
+console.log(data);
 
 local();
