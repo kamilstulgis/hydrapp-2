@@ -22,8 +22,9 @@ const del = document.querySelector('.glass__del--js');
 let glass = 0;
 const key = new Date().toISOString().slice(0, 10);
 
-let history = document.querySelector('.history__days--js');
-let historyGlass = document.querySelector('.history__glasses--js');
+const history = document.querySelector('.history__days--js');
+const historyGlass = document.querySelector('.history__glasses--js');
+const historyLitre = document.querySelector('.history__litre--js');
 
 const index = document.querySelector('.index--js');
 
@@ -37,12 +38,14 @@ if (index) {
       counter.innerHTML = `${glass}`;
       history.innerHTML = `${key}`;
       historyGlass.innerHTML = `${localStorage.getItem(key)}`;
+      historyLitre.innerHTML = `${localStorage.getItem(key) * 0.25} L`;
 
     } else {
       glass = 0;
       counter.innerHTML = `${glass}`;
       history.innerHTML = `${key}`;
       historyGlass.innerHTML = `${glass}`;
+      historyLitre.innerHTML = `${glass * 0.25} L`;
     }
 
     add.addEventListener('click', (e) => {
@@ -54,6 +57,7 @@ if (index) {
 
       history.innerHTML = `${key}`;
       historyGlass.innerHTML = `${localStorage.getItem(key)}`;
+      historyLitre.innerHTML = `${localStorage.getItem(key) * 0.25} L`;
     });
 
 
@@ -70,6 +74,7 @@ if (index) {
       }
       history.innerHTML = `${key}`;
       historyGlass.innerHTML = `${localStorage.getItem(key)}`;
+      historyLitre.innerHTML = `${localStorage.getItem(key) * 0.25} L`;
     });
   }
   local();
@@ -92,12 +97,15 @@ if (hist) {
     for (let el of myArr) {
       let date = document.createElement('p');
       let amountGlass = document.createElement('p');
+      let litre = document.createElement('p');
       console.log(el);
 
       date.innerHTML = `${el.slice(0,10)}`;
       amountGlass.innerHTML = `${el.slice(12,16)}`;
+      litre.innerHTML=`${el.slice(12,16)*0.25} L`;
       history.appendChild(date);
       historyGlass.appendChild(amountGlass);
+      historyLitre.appendChild(litre);
     }
   }
   story();
