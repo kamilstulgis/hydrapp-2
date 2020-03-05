@@ -16,7 +16,6 @@ if ('serviceWorker' in navigator) {
 
 // place your code below
 
-
 const counter = document.querySelector('.glass__counter--js');
 const add = document.querySelector('.glass__add--js');
 const del = document.querySelector('.glass__del--js');
@@ -26,61 +25,83 @@ const key = new Date().toISOString().slice(0, 10);
 let history = document.querySelector('.history__days--js');
 let historyGlass = document.querySelector('.history__glasses--js');
 
-const local = () => {
+const index = document.querySelector('.index--js');
 
-  if (localStorage.getItem(key)) {
-    glass = parseInt(localStorage.getItem(key));
-    counter.innerHTML = `${glass}`;
-    history.innerHTML = `${key}`;
-    historyGlass.innerHTML = `${localStorage.getItem(key)}`;
-
-  } else {
-    glass = 0;
-    counter.innerHTML = `${glass}`;
-    history.innerHTML = `${key}`;
-    historyGlass.innerHTML = `${glass}`;
-  }
-
-  add.addEventListener('click', (e) => {
-    e.preventDefault();
-    glass += 1;
-    localStorage.setItem(key, glass);
-    counter.innerHTML = `${glass}`;
-    console.log(glass);
-
-    history.innerHTML = `${key}`;
-    historyGlass.innerHTML = `${localStorage.getItem(key)}`;
-  });
+if (index) {
 
 
-  del.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (glass <= 0) {
-      glass = 0;
-      localStorage.setItem(key, glass);
-    } else {
-      glass -= 1;
-      localStorage.removeItem(key, glass);
+  let local = () => {
+
+    if (localStorage.getItem(key)) {
+      glass = parseInt(localStorage.getItem(key));
       counter.innerHTML = `${glass}`;
-      localStorage.setItem(key, glass);
+      history.innerHTML = `${key}`;
+      historyGlass.innerHTML = `${localStorage.getItem(key)}`;
+
+    } else {
+      glass = 0;
+      counter.innerHTML = `${glass}`;
+      history.innerHTML = `${key}`;
+      historyGlass.innerHTML = `${glass}`;
     }
-    history.innerHTML = `${key}`;
-    historyGlass.innerHTML = `${localStorage.getItem(key)}`;
-  });
+
+    add.addEventListener('click', (e) => {
+      e.preventDefault();
+      glass += 1;
+      localStorage.setItem(key, glass);
+      counter.innerHTML = `${glass}`;
+      console.log(glass);
+
+      history.innerHTML = `${key}`;
+      historyGlass.innerHTML = `${localStorage.getItem(key)}`;
+    });
+
+
+    del.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (glass <= 0) {
+        glass = 0;
+        localStorage.setItem(key, glass);
+      } else {
+        glass -= 1;
+        localStorage.removeItem(key, glass);
+        counter.innerHTML = `${glass}`;
+        localStorage.setItem(key, glass);
+      }
+      history.innerHTML = `${key}`;
+      historyGlass.innerHTML = `${localStorage.getItem(key)}`;
+    });
+  }
+  local();
 }
 
-let data = {
-  date: `${key}`,
-  glass: localStorage.getItem(key),
+const hist = document.querySelector('.hist--js');
+
+if (hist) {
+  const story = () => {
+    let myArr = [];
+    let keys;
+    let val;
+    
+    for (let i = 0; i < localStorage.length; i++) {
+      keys = `${localStorage.key(i)}`;
+      val = `${localStorage.getItem(keys,i)}`;
+      myArr.push(`${keys} - ${val}`);
+    }
+
+    for (let el of myArr) {
+      let date = document.createElement('p');
+      let amountGlass = document.createElement('p');
+      console.log(el);
+
+      date.innerHTML = `${el.slice(0,10)}`;
+      amountGlass.innerHTML = `${el.slice(12,16)}`;
+      history.appendChild(date);
+      historyGlass.appendChild(amountGlass);
+    }
+  }
+  story();
+
+} else {
+  console.log('nie ma');
 }
-
-let tab = [];
-
-tab.push(`${key}  ${localStorage.getItem(key)}`);
-console.log(tab);
-
-
-
-console.log(data);
-
-local();
