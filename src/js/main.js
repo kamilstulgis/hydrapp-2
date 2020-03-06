@@ -17,8 +17,8 @@ if ('serviceWorker' in navigator) {
 // place your code below
 
 const counter = document.querySelector('.glass__counter--js');
-const add = document.querySelector('.glass__add--js');
-const del = document.querySelector('.glass__del--js');
+const glassAdd = document.querySelector('.glass__add--js');
+const glassDel = document.querySelector('.glass__del--js');
 let glass = 0;
 const key = new Date().toISOString().slice(0, 10);
 
@@ -27,6 +27,7 @@ const historyGlass = document.querySelector('.history__glasses--js');
 const historyLitre = document.querySelector('.history__litre--js');
 
 const index = document.querySelector('.index--js');
+const hist = document.querySelector('.hist--js');
 
 if (index) {
 
@@ -48,20 +49,18 @@ if (index) {
       historyLitre.innerHTML = `${glass * 0.25} L`;
     }
 
-    add.addEventListener('click', (e) => {
+    glassAdd.addEventListener('click', (e) => {
       e.preventDefault();
       glass += 1;
       localStorage.setItem(key, glass);
+      
       counter.innerHTML = `${glass}`;
-      console.log(glass);
-
       history.innerHTML = `${key}`;
       historyGlass.innerHTML = `${localStorage.getItem(key)}`;
       historyLitre.innerHTML = `${localStorage.getItem(key) * 0.25} L`;
     });
 
-
-    del.addEventListener('click', (e) => {
+    glassDel.addEventListener('click', (e) => {
       e.preventDefault();
       if (glass <= 0) {
         glass = 0;
@@ -80,25 +79,22 @@ if (index) {
   local();
 }
 
-const hist = document.querySelector('.hist--js');
-
 if (hist) {
   const story = () => {
     let myArr = [];
-    let keys;
+    let key;
     let val;
     
     for (let i = 0; i < localStorage.length; i++) {
-      keys = `${localStorage.key(i)}`;
-      val = `${localStorage.getItem(keys,i)}`;
-      myArr.push(`${keys} - ${val}`);
+      key = `${localStorage.key(i)}`;
+      val = `${localStorage.getItem(key,i)}`;
+      myArr.push(`${key} - ${val}`);
     }
 
     for (let el of myArr) {
       let date = document.createElement('p');
       let amountGlass = document.createElement('p');
       let litre = document.createElement('p');
-      console.log(el);
 
       date.innerHTML = `${el.slice(0,10)}`;
       amountGlass.innerHTML = `${el.slice(12,16)}`;
@@ -109,7 +105,4 @@ if (hist) {
     }
   }
   story();
-
-} else {
-  console.log('nie ma');
 }
