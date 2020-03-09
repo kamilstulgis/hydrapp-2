@@ -29,9 +29,20 @@ const historyLitre = document.querySelector('.history__litre--js');
 const index = document.querySelector('.index--js');
 const hist = document.querySelector('.hist--js');
 
+const glas = document.getElementById('glass');
+console.log(glas.value);
+
+let a;
+glas.addEventListener('change', (e) => {
+  a = e.target.value;
+    console.log(e.target.value);
+  });
+  
+
 if (index) {
 
 
+  
   let local = () => {
 
     if (localStorage.getItem(key)) {
@@ -39,7 +50,7 @@ if (index) {
       counter.innerHTML = `${glass}`;
       history.innerHTML = `${key}`;
       historyGlass.innerHTML = `${localStorage.getItem(key)}`;
-      historyLitre.innerHTML = `${localStorage.getItem(key) * 0.25} L`;
+      historyLitre.innerHTML = `${localStorage.getItem(key) * a} L`;
 
     } else {
       glass = 0;
@@ -104,5 +115,6 @@ if (hist) {
       historyLitre.appendChild(litre);
     }
   }
+  
   story();
 }
