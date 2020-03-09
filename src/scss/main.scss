@@ -1,6 +1,6 @@
 @import "_normalize";
 @import "_variables";
-@import url('https://fonts.googleapis.com/css?family=Courgette|Inconsolata:400,700&display=swap&subset=latin-ext');
+@import url("https://fonts.googleapis.com/css?family=Courgette|Inconsolata:400,700&display=swap&subset=latin-ext");
 
 html {
   box-sizing: border-box;
@@ -15,7 +15,11 @@ html {
 body {
   color: $secondary;
   background: $bg;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
+}
+
+.footer {
+  margin: 2em 0 1em;
 }
 
 .glass {
@@ -27,18 +31,28 @@ body {
   }
   &__btn {
     border: 0;
-    border-radius: 4px;   
+    border-radius: 4px;
     padding: 12px 32px;
     margin-bottom: 1em;
+    transition: background .3s ease-in-out, color .3s ease-in-out;
     &--add {
       margin-top: 2em;
       background: $secondary;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      &:hover {
+        background: #000;
+        color: $secondary;
+       
+      }
     }
     &--del {
       background: none;
       color: $secondary;
       font-size: 14px;
+      &:hover {
+        color: #000;
+        
+      }
     }
   }
   &__counter {
@@ -67,15 +81,30 @@ body {
     letter-spacing: 3px;
     font-size: 2em;
     font-style: italic;
-    font-family: 'Shadows Into Light';
+    font-family: "Shadows Into Light";
   }
 }
 
 .history {
   text-align: center;
+  &__btn {
+    color: #000;
+    margin: 1em 0 2em;
+    display: inline-block;
+    background: $secondary;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 10px 14px;
+    transition: background .3s ease-in-out, color .3s ease-in-out;
+    &:hover {
+      background: #000;
+      color: $secondary;
+    }
+  }
   &__day {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1em;
   }
   &__days {
@@ -83,14 +112,16 @@ body {
   }
   &__glass {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: 1em 0;
   }
   &__glasses {
     margin: 0;
   }
+  &__litre {
+    margin: 0;
+  }
   &__structure {
-
   }
   &__text {
     text-align: center;
