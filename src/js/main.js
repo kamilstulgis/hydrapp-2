@@ -29,28 +29,17 @@ const historyLitre = document.querySelector('.history__litre--js');
 const index = document.querySelector('.index--js');
 const hist = document.querySelector('.hist--js');
 
-const glas = document.getElementById('glass');
-console.log(glas.value);
-
-let a;
-glas.addEventListener('change', (e) => {
-  a = e.target.value;
-    console.log(e.target.value);
-  });
-  
 
 if (index) {
-
-
-  
   let local = () => {
+
 
     if (localStorage.getItem(key)) {
       glass = parseInt(localStorage.getItem(key));
       counter.innerHTML = `${glass}`;
       history.innerHTML = `${key}`;
       historyGlass.innerHTML = `${localStorage.getItem(key)}`;
-      historyLitre.innerHTML = `${localStorage.getItem(key) * a} L`;
+      historyLitre.innerHTML = `${localStorage.getItem(key) * .25} L`;
 
     } else {
       glass = 0;
@@ -64,11 +53,11 @@ if (index) {
       e.preventDefault();
       glass += 1;
       localStorage.setItem(key, glass);
-      
+
       counter.innerHTML = `${glass}`;
       history.innerHTML = `${key}`;
       historyGlass.innerHTML = `${localStorage.getItem(key)}`;
-      historyLitre.innerHTML = `${localStorage.getItem(key) * 0.25} L`;
+      historyLitre.innerHTML = `${localStorage.getItem(key) * .25} L`;
     });
 
     glassDel.addEventListener('click', (e) => {
@@ -95,7 +84,7 @@ if (hist) {
     let myArr = [];
     let key;
     let val;
-    
+
     for (let i = 0; i < localStorage.length; i++) {
       key = `${localStorage.key(i)}`;
       val = `${localStorage.getItem(key,i)}`;
@@ -109,12 +98,12 @@ if (hist) {
 
       date.innerHTML = `${el.slice(0,10)}`;
       amountGlass.innerHTML = `${el.slice(12,16)}`;
-      litre.innerHTML=`${el.slice(12,16)*0.25} L`;
+      litre.innerHTML = `${el.slice(12,16)*0.25} L`;
       history.appendChild(date);
       historyGlass.appendChild(amountGlass);
       historyLitre.appendChild(litre);
     }
   }
-  
+
   story();
 }
